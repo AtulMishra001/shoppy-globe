@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
-
+import { useSelector } from "react-redux";
+import {selectCartTotalCount} from "../features/cartSlice.js"
 const Header = () => {
+  const cartItems = useSelector(selectCartTotalCount);
   return (
     <nav className="bg-blue-600 text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
@@ -13,7 +15,7 @@ const Header = () => {
             Home
           </Link>
           <Link to="/cart" className="hover:text-blue-200 font-semibold">
-            Cart 🛒
+            Cart- {cartItems}
           </Link>
         </div>
       </div>
