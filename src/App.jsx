@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Header from "./components/Header"; 
 import Footer from "./components/Footer";
+import Loading from "./components/Loading";
 
 const Home = lazy(() => import("./pages/Home"));
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
@@ -16,9 +17,7 @@ const Layout = () => {
       <div className="container mx-auto px-4 py-4 min-h-screen">
         <Suspense
           fallback={
-            <div className="text-center mt-10 text-xl">
-              Loading ShoppyGlobe...
-            </div>
+            <Loading />
           }
         >
           <Outlet />

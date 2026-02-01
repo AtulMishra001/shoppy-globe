@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import useFetchProducts from "../utils/useFetchProducts";
 import ProductItem from "./ProductItem";
 import { selectSearchQuery } from "../features/productSlice";
+import Loading from "./Loading";
 
 const ProductList = () => {
   const { products, loading, error } = useFetchProducts();
@@ -14,7 +15,7 @@ const ProductList = () => {
   );
 
   if (loading) {
-    return <div className="text-center text-xl mt-10">Loading products...</div>;
+    return <Loading />;
   }
 
   if (error) {

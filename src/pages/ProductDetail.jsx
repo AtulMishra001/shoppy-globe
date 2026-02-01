@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cartSlice";
 import { fetchProductById } from "../utils/api";
+import Loading from "../components/Loading";
 
 const ProductDetail = () => {
   const { id } = useParams(); 
@@ -36,7 +37,7 @@ const ProductDetail = () => {
 
 
   if (loading)
-    return <div className="text-center mt-10 text-xl">Loading details...</div>;
+    return <Loading />;
 
   if (error) {
     return (
@@ -61,7 +62,6 @@ const ProductDetail = () => {
       </Link>
 
       <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row">
-
         <div className="md:w-1/2">
           <img
             src={product.thumbnail}
@@ -81,7 +81,6 @@ const ProductDetail = () => {
             ))}
           </div>
         </div>
-
 
         <div className="p-8 md:w-1/2 flex flex-col">
           <h1 className="text-4xl font-bold mb-4 text-gray-800">
@@ -108,7 +107,7 @@ const ProductDetail = () => {
 
             <button
               onClick={handleAddToCart}
-              className="w-full md:w-auto bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold text-lg"
+              className="active:scale-95  w-full md:w-auto bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-all font-semibold text-lg"
             >
               Add to Cart 🛒
             </button>
