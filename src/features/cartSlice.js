@@ -8,7 +8,7 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action) => {
+    addToCart: (state, action) => { //this function is to add product to cart if already exists increases quantity.
       const product = action.payload;
       const existingItem = state.items.find((item) => item.id === product.id);
 
@@ -19,12 +19,12 @@ const cartSlice = createSlice({
       }
     },
 
-    removeFromCart: (state, action) => {
+    removeFromCart: (state, action) => { // this function is to remove product from cart using product Id.
       const id = action.payload;
       state.items = state.items.filter((item) => item.id !== id);
     },
 
-    updateQuantity: (state, action) => {
+    updateQuantity: (state, action) => { // this function is to change quantity from cartitem component.
       const { id, amount } = action.payload;
       const item = state.items.find((item) => item.id === id);
 
@@ -35,7 +35,7 @@ const cartSlice = createSlice({
         }
       }
     },
-    clearCart: (state) => {
+    clearCart: (state) => { //this will clear the cart
       state.items = [];
     },
   },
@@ -43,8 +43,8 @@ const cartSlice = createSlice({
 
 export const { addToCart, removeFromCart, updateQuantity, clearCart} = cartSlice.actions;
 
-export const selectCartItems = (state) => state.cart.items;
+export const selectCartItems = (state) => state.cart.items; //alredy exporting the specific state to use in useSelector.
 export const selectCartTotalCount = (state) =>
-  state.cart.items.reduce((total, item) => total + item.quantity, 0);
+  state.cart.items.reduce((total, item) => total + item.quantity, 0); //exporting the number of items in cart for header.
 
 export default cartSlice.reducer;
