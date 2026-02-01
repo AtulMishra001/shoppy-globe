@@ -31,7 +31,6 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (product) {
       dispatch(addToCart(product));
-      alert(`${product.title} added to cart!`);
     }
   };
 

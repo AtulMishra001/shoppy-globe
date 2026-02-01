@@ -9,7 +9,6 @@ const ProductItem = ({ product }) => {
   const handleAddToCart = (e) => {
     e.preventDefault();
     dispatch(addToCart(product));
-    alert(`${product.title} added to cart!`); 
   };
 
   return (
